@@ -7,10 +7,18 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\KasirMiddleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\pemasokController;
+use App\Http\Controllers\pembelianController;
+use App\Http\Controllers\penjualanController;
 
 Route::get('/dashboard/admin', [IndexController::class, 'allData1'])->name('admin')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/dashboard/kasir', [IndexController::class, 'allData2'])->name('kasir')->middleware(['auth', KasirMiddleware::class]);
 
+Route::resource('barang', BarangController::class);
+Route::resource('pemasok', pemasokController::class);
+Route::resource('pembelian', pembelianController::class);
+Route::resource('penjualan', penjualanController::class);
 
 Route::get('/', function () {
     return view('login');
