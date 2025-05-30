@@ -2,67 +2,79 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\barang;
+use App\Models\Pemasok;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        return view('barang.index', [
-            'title' => 'Data Barang',
-            'active' => 'barang',
-            'barang' => \App\Models\Barang::all(),
-        ]);
+        $keyword = $request->cari;
+        $data = Barang::where('nama_barang', 'like', "%$keyword%")->paginate(10);
+        return view('barang.index', compact('data', 'keyword'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $pemasok = Pemasok::all();
+        return view('barang.create', compact('pemasok'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_barang' => 'required',
+            'harga_beli' => 'required',
+            'harga_jual' => 'required',
+            'stok' => 'required',
+            'pemasok_id' => 'required',
+            'gambar' => 'nullable|image|mimes:png|max:2048',
+            'keterangan' => 'nullable'
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file('gambar')->store('barang', 'public');
+            $validated['gambar'] = $gambar;
+        }
+
+        Barang::create($validated);
+        return redirect()->route('barang.index')->with('success', 'Barang berhasil ditambahkan!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit($id)
     {
-        //
+        $barang = Barang::findOrFail($id);
+        $pemasok = Pemasok::all();
+        return view('barang.edit', compact('barang', 'pemasok'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $barang = Barang::findOrFail($id);
+        $validated = $request->validate([
+            'nama_barang' => 'required',
+            'harga_beli' => 'required',
+            'harga_jual' => 'required',
+            'stok' => 'required',
+            'pemasok_id' => 'required',
+            'gambar' => 'nullable|image|mimes:png|max:2048',
+            'keterangan' => 'nullable'
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file('gambar')->store('barang', 'public');
+            $validated['gambar'] = $gambar;
+        }
+
+        $barang->update($validated);
+        return redirect()->route('barang.index')->with('success', 'Barang berhasil diperbarui!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $barang = barang::findOrFail($id);
+        $barang->delete();
+        return redirect()->route('barang.index')->with('success', 'Barang berhasil dihapus!');
     }
 }

@@ -9,7 +9,7 @@ scale=1, shrink-to-fit=no">
 
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Tutorial Laravel</title>
+<title>Dream UP!!</title>
 <!-- Custom fonts for this template-->
 
 <link href="{{ asset('template/vendor/fontawesome-
@@ -23,7 +23,27 @@ rel="stylesheet">
 <!-- Custom styles for this template-->
 <link href="{{ asset('template/css/sb-admin-2.min.css') }}"
 rel="stylesheet">
+
+<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+ @if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Terjadi kesalahan!</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+    @if (session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 </head>
+
+
 <body id="page-top">
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -34,7 +54,7 @@ rel="stylesheet">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">DREAM <sup>up!!</sup></div>
     </a>
 
     <hr class="sidebar-divider">

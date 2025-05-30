@@ -2,67 +2,58 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pemasok;
 use Illuminate\Http\Request;
 
 class pemasokController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pemasok.index', [
-            'title' => 'Data Pemasok',
-            'active' => 'pemasok',
-            'pemasok' => \App\Models\Pemasok::all(),
-        ]);
+        $keyword = $request->cari;
+        $data = Pemasok::where('nama_pemasok', 'like', "%$keyword%")->paginate(10);
+        return view('pemasok.index', compact('data', 'keyword'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('pemasok.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_pemasok' => 'required',
+            'no_telp' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        Pemasok::create($validated);
+        return redirect()->route('pemasok.index')->with('success', 'Pemasok berhasil ditambahkan!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit($id)
     {
-        //
+        $pemasok = Pemasok::findOrFail($id);
+        return view('pemasok.edit', compact('pemasok'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $pemasok = Pemasok::findOrFail($id);
+        $validated = $request->validate([
+            'nama_pemasok' => 'required',
+            'no_telp' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        $pemasok->update($validated);
+        return redirect()->route('pemasok.index')->with('success', 'Pemasok berhasil diperbarui!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $pemasok = Pemasok::findOrFail($id);
+        $pemasok->delete();
+        return redirect()->route('pemasok.index')->with('success', 'Pemasok berhasil dihapus!');
     }
 }
