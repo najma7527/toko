@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class detail_penjualan extends Model
 {
-    protected $table = 'detail_penjualan';
+    protected $table = 'detail_penjualans';
 
     protected $primaryKey = 'id';
 
@@ -14,8 +14,9 @@ class detail_penjualan extends Model
         'penjualan_id',
         'barang_id',
         'jumlah',
-        'harga',
-        'subtotal',
+        'harga_jual',
+        'sub_total',
+        'keterangan',
     ];
 
     public $timestamps = false;

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register | Dream Cat</title>
+    <title>Register | Dream UP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" />
 </head>
@@ -79,7 +79,7 @@
 
         <p class="text-center text-sm text-gray-600 mt-4">
             Sudah punya akun?
-            <a href="{{ route('login') }}" class="text-orange-600 hover:underline font-medium">Masuk di sini</a>
+            <a href="{{ route('login.form') }}" class="text-orange-600 hover:underline font-medium">Masuk di sini</a>
         </p>
     </div>
 

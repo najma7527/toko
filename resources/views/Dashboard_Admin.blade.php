@@ -114,39 +114,7 @@
         </div>
     </div>
 
-    <!-- Recent Transactions -->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Transaksi Terakhir</h6>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" width="100%" cellspacing="0">
-                            <thead>
-                                 <tr>
-                                    <th>ID Transaksi</th>
-                                    <th>Tanggal</th>
-                                    <th>Kasir</th>
-                                    <th>Total Haga</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($penjualan as $transaksi)
-                                <tr>
-                                    <td>{{ $transaksi->id }}</td>
-                                    <td>{{ $transaksi->created_at->format('d/m/Y H:i') }}</td>
-                                    <td>{{ $transaksi->user->name }}</td>
-                                    <td>Rp {{ number_format($transaksi->total_haga, 0, ',', '.') }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
     </div>
 </div>
 @endsection

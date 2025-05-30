@@ -22,7 +22,7 @@ Route::resource('penjualan', penjualanController::class);
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('login.form')->middleware('guest');
 
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
