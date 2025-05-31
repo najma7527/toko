@@ -26,25 +26,26 @@ class pembelianController extends Controller
     
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
-            'permasok_id' => 'required|exists:tugas_akhir_pemasoks,id',
+            'pemasok_id' => 'required|exists:pemasoks,id',
             'barang_id' => 'required|array',
-            'barang_id.*' => 'exists:tugas_akhir_barangs,id',
+            'barang_id.*' => 'exists:barangs,id',
             'jumlah' => 'required|array',
             'jumlah.*' => 'integer|min:1',
-            'harga_beli' => 'required|array',
-            'harga_beli.*' => 'numeric|min:0',
+            'harga_satuan' => 'required|array',
+            'harga_satuan.*' => 'numeric|min:0',
         ]);
         
         // Hitung total harga
         $total = 0;
         foreach ($request->barang_id as $key => $barang_id) {
-            $total += $request->jumlah[$key] * $request->harga_beli[$key];
+            $total += $request->jumlah[$key] * $request->harga_satuan[$key];
         }
         
         // Buat pembelian
         $pembelian = Pembelian::create([
-            'permasok_id' => $request->permasok_id,
+            'pemasok_id' => $request->pemasok_id,
             'user_id' => Auth::id(),
             'total_harga' => $total,
         ]);
@@ -55,8 +56,8 @@ class pembelianController extends Controller
                 'pembelian_id' => $pembelian->id,
                 'barang_id' => $barang_id,
                 'jumlah' => $request->jumlah[$key],
-                'harga_beli' => $request->harga_beli[$key],
-                'sub_total' => $request->jumlah[$key] * $request->harga_beli[$key],
+                'harga_satuan' => $request->harga_satuan[$key],
+                'sub_total' => $request->jumlah[$key] * $request->harga_satuan[$key],
                 'keterangan' => $request->keterangan[$key] ?? null,
             ]);
             

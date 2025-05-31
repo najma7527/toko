@@ -17,7 +17,7 @@ class detail_pembelian extends Model
         'barang_id',
         'jumlah',
         'harga_satuan',
-        'subtotal',
+        'sub_total',
     ];
 
     public function pembelian()

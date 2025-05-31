@@ -14,7 +14,7 @@
     <div class="bg-white shadow-xl rounded-3xl w-full max-w-md p-8 relative border border-orange-200">
         <div class="text-center mb-6">
             <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="logo dream cat" class="mx-auto w-20 h-20 mb-2">
-            <h1 class="text-3xl font-bold text-orange-700">Login Dream Cat</h1>
+            <h1 class="text-3xl font-bold text-orange-700">Login Dream Up</h1>
             <p class="text-sm text-gray-500">Silakan masuk untuk melanjutkan</p>
         </div>
 

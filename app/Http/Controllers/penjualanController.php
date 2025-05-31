@@ -20,7 +20,7 @@ class penjualanController extends Controller
     
     public function create()
     {
-        $barangs = Barang::where('stok', '>', 0)->get();
+        $barangs = Barang::all();
         return view('penjualan.create', compact('barangs'));
     }
     

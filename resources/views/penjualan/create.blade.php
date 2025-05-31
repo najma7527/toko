@@ -25,7 +25,7 @@
                                     <option value="">Pilih Barang</option>
                                     @foreach($barangs as $barang)
                                     <option value="{{ $barang->id }}" data-harga="{{ $barang->harga_jual }}" data-stok="{{ $barang->stok }}">
-                                        {{ $barang->name_barang }} (Stok: {{ $barang->stok }})
+                                        {{ $barang->nama_barang }} (Stok: {{ $barang->stok }})
                                     </option>
                                     @endforeach
                                 </select>

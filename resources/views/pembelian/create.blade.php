@@ -13,11 +13,11 @@
                 @csrf
                 
                 <div class="form-group">
-                    <label for="permasok_id">Pemasok</label>
-                    <select name="permasok_id" id="permasok_id" class="form-control" required>
+                    <label for="pemasok_id">Pemasok</label>
+                    <select name="pemasok_id" id="pemasok_id" class="form-control" required>
                         <option value="">Pilih Pemasok</option>
                         @foreach($pemasoks as $pemasok)
-                        <option value="{{ $pemasok->id }}">{{ $pemasok->name_pemasok }}</option>
+                        <option value="{{ $pemasok->id }}">{{ $pemasok->nama_pemasok }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -35,7 +35,7 @@
                                     <option value="">Pilih Barang</option>
                                     @foreach($barangs as $barang)
                                     <option value="{{ $barang->id }}" data-harga="{{ $barang->harga_beli }}">
-                                        {{ $barang->name_barang }}
+                                        {{ $barang->nama_barang }}
                                     </option>
                                     @endforeach
                                 </select>
@@ -44,7 +44,7 @@
                                 <input type="number" name="jumlah[]" class="form-control jumlah" placeholder="Jumlah" min="1" required>
                             </div>
                             <div class="col-md-3">
-                                <input type="number" name="harga_beli[]" class="form-control harga" placeholder="Harga Beli" required>
+                                <input type="number" name="harga_satuan[]" class="form-control harga" placeholder="Harga Beli" required>
                             </div>
                             <div class="col-md-2">
                                 <input type="text" class="form-control-plaintext sub-total" placeholder="Sub Total" readonly>

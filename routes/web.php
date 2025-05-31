@@ -8,6 +8,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\KasirMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\pemasokController;
 use App\Http\Controllers\pembelianController;
 use App\Http\Controllers\penjualanController;
@@ -33,4 +34,9 @@ Route::get('/register', function () {
 })->name('register.form');
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
+
+Route::prefix('laporan')->group(function () {
+    Route::get('/pembelian', [LaporanController::class, 'pembelian'])->name('laporan.pembelian');
+    Route::get('/penjualan', [LaporanController::class, 'penjualan'])->name('laporan.penjualan');
+});
 

@@ -28,4 +28,10 @@ class pembelian extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Relasi ke model DetailPembelian
+    public function detailPembelian()
+    {
+        return $this->hasMany(detail_pembelian::class);
+    }
 }

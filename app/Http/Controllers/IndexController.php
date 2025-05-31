@@ -16,7 +16,7 @@ class IndexController extends Controller
             'total_pemasok' => pemasok::count(),
             'total_transaksi' => penjualan::count(),
             'pendapatan_bulan_ini' => penjualan::whereMonth('created_at', now()->month)->sum('total_harga'),
-            'penjualan' => penjualan::with('kasir')->latest()->take(5)->get()
+       
         ]);
     }
 

@@ -1,9 +1,15 @@
 @extends('template')
 
 @section('content')
+@include('laporan.filter', ['action' => route('laporan.pembelian')]) 
 <div class="container">
     <h1 class="mb-4">Daftar Pembelian</h1>
     
+    <!-- <a href="{{ route('laporan.pembelian', ['start_date' => request('start_date'), 'end_date' => request('end_date')]) }}" 
+   class="btn btn-info" target="_blank">
+    <i class="fas fa-print"></i> Cetak Laporan
+</a> -->
+
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">Data Pembelian</h6>
@@ -30,7 +36,7 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>PBL-{{ str_pad($pembelian->id, 5, '0', STR_PAD_LEFT) }}</td>
-                            <td>{{ $pembelian->pemasok->name_pemasok }}</td>
+                            <td>{{ $pembelian->pemasok->nama_pemasok }}</td>
                             <td>Rp {{ number_format($pembelian->total_harga, 0, ',', '.') }}</td>
                             <td>{{ $pembelian->created_at->format('d/m/Y H:i') }}</td>
                             <td>{{ $pembelian->user->name }}</td>

@@ -1,8 +1,14 @@
 @extends('template')
 
 @section('content')
+@include('laporan.filter', ['action' => route('laporan.penjualan')]) 
 <div class="container">
     <h1 class="mb-4">Daftar Penjualan</h1>
+
+    <!-- <a href="{{ route('laporan.penjualan', ['start_date' => request('start_date'), 'end_date' => request('end_date')]) }}" 
+   class="btn btn-info" target="_blank">
+    <i class="fas fa-print"></i> Cetak Laporan
+</a> -->
     
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
