@@ -54,13 +54,7 @@
                     </tfoot>
                 </table>
             </div>
-            
-            @if($pembelian->detailPembelian->first()->keterangan)
-            <div class="mt-3">
-                <h5>Keterangan:</h5>
-                <p>{{ $pembelian->detailPembelian->first()->keterangan }}</p>
-            </div>
-            @endif
+           
         </div>
     </div>
 </div>

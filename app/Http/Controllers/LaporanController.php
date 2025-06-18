@@ -23,23 +23,19 @@ class LaporanController extends Controller
     $startDate = Carbon::parse($request->start_date)->startOfDay();
     $endDate = Carbon::parse($request->end_date)->endOfDay();
 
-    // Ambil data pembelian utama sesuai rentang tanggal
     $pembelians = pembelian::with(['pemasok', 'user'])
         ->whereBetween('created_at', [$startDate, $endDate])
         ->get();
 
-    // Ambil detail pembelian yang terhubung ke pembelian dalam rentang tanggal
     $detailPembelians = detail_pembelian::with(['barang', 'pembelian'])
         ->whereHas('pembelian', function($query) use ($startDate, $endDate) {
             $query->whereBetween('created_at', [$startDate, $endDate]);
         })
         ->get();
 
-    // Hitung total barang dan total pembelian
     $totalBarang = $detailPembelians->sum('jumlah');
     $totalPembelian = $detailPembelians->sum('sub_total');
 
-    // Kirim data ke view
     return view('laporan.pembelian', compact(
         'pembelians',
         'detailPembelians',

@@ -36,7 +36,7 @@
                         @foreach($penjualan->detailPenjualan as $key => $detail)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>{{ $detail->barang->name_barang }}</td>
+                            <td>{{ $detail->barang->nama_barang }}</td>
                             <td>Rp {{ number_format($detail->harga_jual, 0, ',', '.') }}</td>
                             <td>{{ $detail->jumlah }}</td>
                             <td>Rp {{ number_format($detail->sub_total, 0, ',', '.') }}</td>

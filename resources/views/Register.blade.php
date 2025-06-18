@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register | Dream UP</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" />
+    <link rel="icon" href="https://img.mbizmarket.co.id/products/thumbs/800x800/2023/06/17/c16712530ca399a09c9619a296ba6d09.jpg" />
 </head>
 
-<body class="bg-gradient-to-br from-yellow-50 to-orange-100 min-h-screen flex items-center justify-center">
+<body class="bg-gradient-to-br from-blue-50 to-blue-100 min-h-screen flex items-center justify-center">
 
     <div class="bg-white shadow-xl rounded-3xl w-full max-w-md p-8 relative border border-orange-200">
         <div class="text-center mb-6">
-            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="logo dream cat" class="mx-auto w-20 h-20 mb-2">
-            <h1 class="text-3xl font-bold text-orange-700">Daftar Dream Up</h1>
+            <img src="https://img.mbizmarket.co.id/products/thumbs/800x800/2023/06/17/c16712530ca399a09c9619a296ba6d09.jpg" alt="logo dream cat" class="mx-auto w-20 h-20 mb-2">
+            <h1 class="text-3xl font-bold text-blue-700">Daftar Dream Up</h1>
             <p class="text-sm text-gray-500">Silakan isi formulir untuk membuat akun</p>
         </div>
 
@@ -72,7 +72,7 @@
             </div>
 
             <button type="submit"
-                class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 rounded-lg transition duration-300">
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-300">
                 Daftar
             </button>
         </form>
